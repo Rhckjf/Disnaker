@@ -43,7 +43,7 @@ export default function SelayangPandang() {
 
         {/* Tugas Pokok */}
         <div className="container-tight mt-14">
-          <div className="pill mb-3 inline-flex">Tugas Pokok</div>
+          <div className="pill mb-3 inline-flex">Tugas Pokok...</div>
         </div>
         <div className="container-tight pb-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
