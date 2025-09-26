@@ -70,7 +70,7 @@ function Berita() {
                 href="#"
                 className="text-blue-600 hover:underline text-sm mt-3"
               >
-                Baca selengkapnya
+                Baca selengkapnya gess!!!
               </a>
             </div>
           ))}
