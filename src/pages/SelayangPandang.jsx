@@ -3,10 +3,10 @@ import Footer from "../components/Footer";
 
 export default function SelayangPandang() {
   const tugas = [
-    { title: "Pengembangan\nStrategi", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit," },
-    { title: "Koordinasi", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit," },
-    { title: "Evaluasi", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit," },
-    { title: "Monitoring", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit," },
+    { title: "Pengembangan\nStrategi", desc: "coming soon ," },
+    { title: "Koordinasi", desc: "coming soon ," },
+    { title: "Evaluasi", desc: "coming soon ," },
+    { title: "Monitoring", desc: "coming soon ," },
   ];
 
   return (
@@ -33,10 +33,9 @@ export default function SelayangPandang() {
         {/* kotak utama */}
         <div className="container-tight">
           <div className="bg-white border border-slate-200/70 rounded-[22px] shadow-xl p-6 sm:p-8 min-h-[300px]">
-            <span className="pill mb-3 inline-flex">Title</span>
+            <span className="pill mb-3 inline-flex">Sekilas Disnaker</span>
             <p className="text-[13.5px] leading-relaxed text-slate-600 max-w-[60ch]">
-              Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes,
-              or even a very very short story.
+              Selamat datang di situs Dinas Tenaga Kerja Kabupaten Bekasi. Melalui media ini kami berupaya memberikan informasi ketenagakerjaan yang cepat, transparan, dan bermanfaat bagi masyarakat. Semoga layanan ini membantu dan mendukung peningkatan kualitas tenaga kerja serta kesejahteraan bersama.
             </p>
           </div>
         </div>

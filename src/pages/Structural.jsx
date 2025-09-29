@@ -44,8 +44,8 @@ export default function Structural() {
                 {/* Panel gambar struktur */}
                 <div className="rounded-[20px] bg-slate-50 border border-slate-200 shadow-sm overflow-hidden">
                   <img
-                    src="/struktur.png" // letakkan gambar di /public/struktur.png
-                    alt="Struktur Organisasi"
+                    src="/structural.png"
+                    alt="Structural"
                     className="w-full h-auto object-contain"
                     onError={(e) => {
                       e.currentTarget.outerHTML =
