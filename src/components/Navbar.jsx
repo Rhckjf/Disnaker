@@ -129,7 +129,7 @@ export default function Navbar() {
           Berita
         </Link>
         <Link to="/sipkerja" className="hover:text-blue-900">
-          Hasil Kepuasan Masyarakat (HKM)
+          Hasil Kepuasan Masyarakat 
         </Link>
       </nav>
     </header>

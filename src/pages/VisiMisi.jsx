@@ -43,8 +43,7 @@ export default function VisiMisi() {
                     <div>
                       <h3 className="font-semibold text-[14px] mb-1">Visi</h3>
                       <p className="text-[12.5px] text-slate-600 leading-relaxed">
-                        Body text for whatever you'd like to say. Add main takeaway
-                        points, quotes, anecdotes, or even a very very short story.
+                       “Mewujudkan tenaga kerja Kabupaten Bekasi yang berdaya saing, sejahtera, dan terlindungi.”
                       </p>
                     </div>
                     <div className="h-[90px] w-[120px] bg-slate-200 rounded-md justify-self-end" />
@@ -58,8 +57,7 @@ export default function VisiMisi() {
                     <div>
                       <h3 className="font-semibold text-[14px] mb-1">Misi</h3>
                       <p className="text-[12.5px] text-slate-600 leading-relaxed">
-                        Body text for whatever you'd like to say. Add main takeaway
-                        points, quotes, anecdotes, or even a very very short story.
+                       Meningkatkan kualitas dan kompetensi tenaga kerja melalui pelatihan dan sertifikasi, memperluas kesempatan kerja dan memperkuat hubungan dengan dunia industri, memberikan perlindungan serta pengawasan ketenagakerjaan yang berkeadilan, dan mengembangkan layanan ketenagakerjaan yang transparan serta profesional.
                       </p>
                     </div>
                   </div>
