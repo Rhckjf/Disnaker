@@ -65,7 +65,7 @@ export default function SplashScreen({ minDuration = 1200, onDone }) {
         </div>
 
         <div className="text-center -mt-2">
-          <h2 className="text-[15px] font-semibold tracking-wide">Memuat konten</h2>
+          <h2 className="text-[15px] font-semibold tracking-wide">Wait a Moment</h2>
           <p className="text-[12.5px] text-slate-600 dark:text-slate-400 mt-1">
             {progress}%
           </p>

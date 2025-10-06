@@ -1,8 +1,9 @@
+// src/pages/Document.jsx
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 export default function Document() {
-  // contoh data dummy (nanti bisa ganti dari API/DB)
   const docs = [
     { id: 1, title: "Rencana Kerja Divisi 2025", type: "PDF", size: "1.2 MB", date: "2025-07-01" },
     { id: 2, title: "Notulen Rapat Mingguan", type: "DOCX", size: "320 KB", date: "2025-06-27" },
@@ -10,93 +11,108 @@ export default function Document() {
     { id: 4, title: "Panduan Operasional", type: "PDF", size: "2.1 MB", date: "2025-05-20" },
   ];
 
+  const [search, setSearch] = useState("");
+  const filteredDocs = docs.filter((d) =>
+    d.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
       <Navbar />
 
-     {/* ===== HEADER BIRU = foto jadi background ===== */}
+      {/* ===== HERO ===== */}
       <section
-        className="relative bg-[#18446C] text-white h-[280px] sm:h-[320px]"
+        className="relative h-[280px] sm:h-[340px] text-white"
         style={{
           backgroundImage: "url('/gedung.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-[#18446C]/60" />
-        <div className="relative z-10 h-full flex items-center justify-center text-center">
-          <div>
-            <h1 className="title-page">DOCUMENTS</h1>
-            <p className="text-white/80 text-sm sm:text-base mt-1">Semua dokumen penting di satu tempat</p>
-          </div>
+        <div className="absolute inset-0 bg-[#18446C]/60 backdrop-blur-sm" />
+        <div className="relative z-10 max-w-5xl mx-auto h-full px-4 md:px-6 flex flex-col justify-end items-start pb-8 sm:pb-10">
+          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight">
+            Documents
+          </h1>
+          <p className="text-white/85 text-sm sm:text-base mt-2 max-w-xl">
+            Semua dokumen penting di satu tempat.
+          </p>
         </div>
       </section>
 
-      {/* ===== CONTENT ===== */}
-      <section className="-mt-20 relative z-20">
-        <div className="container-tight">
-          {/* Toolbar: Search + Filter */}
-          <div className="bg-white/95 border border-slate-200/70 rounded-[18px] shadow-soft p-4 sm:p-5 ring-2 ring-[#2F67B2]">
-            <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-              <div className="flex-1">
-                <label className="sr-only">Search</label>
-                <input
-                  type="text"
-                  placeholder="Cari dokumen..."
-                  className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#18446C] focus:ring-2 focus:ring-[#18446C]/20 transition"
-                />
-              </div>
-              <div className="flex gap-2">
-                <select className="rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-[#18446C] focus:ring-2 focus:ring-[#18446C]/20">
-                  <option value="">Semua Tipe</option>
-                  <option value="PDF">PDF</option>
-                  <option value="DOCX">DOCX</option>
-                  <option value="XLSX">XLSX</option>
-                </select>
-                <select className="rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-[#18446C] focus:ring-2 focus:ring-[#18446C]/20">
-                  <option value="new">Terbaru</option>
-                  <option value="old">Terlama</option>
-                  <option value="az">A → Z</option>
-                  <option value="za">Z → A</option>
-                </select>
-                <button className="rounded-xl bg-[#18446C] text-white px-4 py-2 text-sm hover:opacity-90 transition">
-                  Upload
-                </button>
-              </div>
+      {/* ===== BODY ===== */}
+      <section className="bg-[#F6F7F9] dark:bg-[#0A0F18]">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 -mt-6 sm:-mt-8 pb-12 space-y-8">
+          <article
+            className="backdrop-blur-md rounded-2xl shadow-sm
+                       bg-white/80 dark:bg-white/5
+                       border border-white/30 dark:border-white/10
+                       p-6 md:p-8"
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <span className="inline-block h-2 w-8 rounded-full bg-[#18446C] dark:bg-white/70" />
+              <h2 className="text-lg md:text-xl font-semibold text-[#0F172A] dark:text-white">
+                Daftar Dokumen
+              </h2>
             </div>
-          </div>
 
-          {/* Grid Documents */}
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {docs.map((d) => (
-              <div
-                key={d.id}
-                className="bg-white border border-slate-200/70 rounded-[18px] shadow-soft p-4 flex gap-3"
+            {/* Search bar + button */}
+            <div className="mb-6 flex gap-2">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Cari dokumen..."
+                className="flex-1 rounded-xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#18446C] focus:ring-2 focus:ring-[#18446C]/20 transition"
+              />
+              <button
+                onClick={() => {/* kita sudah filter realtime, ini hanya visual */}}
+                className="rounded-xl bg-[#18446C] text-white px-5 py-2.5 text-sm hover:opacity-90 transition"
               >
-                <div className="h-10 w-10 rounded-xl bg-slate-100 grid place-items-center text-slate-700 shrink-0">
-                  <FileIcon type={d.type} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-[14.5px] text-slate-800 truncate">{d.title}</h3>
-                  <div className="text-[12px] text-slate-500 mt-0.5">
-                    <span className="mr-2">{d.type}</span>• <span className="mx-2">{d.size}</span>•{" "}
-                    <span className="ml-2">{formatDate(d.date)}</span>
-                  </div>
-                  <div className="mt-3 flex gap-2">
-                    <button className="rounded-lg border border-slate-200 px-3 py-1.5 text-[12.5px] hover:bg-slate-50">
-                      View
-                    </button>
-                    <button className="rounded-lg bg-[#18446C] text-white px-3 py-1.5 text-[12.5px] hover:opacity-90">
-                      Download
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                Search
+              </button>
+            </div>
 
-          {/* Footer spacer */}
-          <div className="h-8" />
+            {/* Grid Documents */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {filteredDocs.length > 0 ? (
+                filteredDocs.map((d) => (
+                  <div
+                    key={d.id}
+                    className="backdrop-blur-md rounded-2xl shadow-sm
+                               bg-white/80 dark:bg-white/5
+                               border border-white/30 dark:border-white/10
+                               p-4 flex gap-3"
+                  >
+                    <div className="h-10 w-10 rounded-xl bg-slate-100 grid place-items-center text-slate-700 shrink-0">
+                      <FileIcon type={d.type} />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-[14.5px] text-slate-800 truncate dark:text-white">
+                        {d.title}
+                      </h3>
+                      <div className="text-[12px] text-slate-500 mt-0.5 dark:text-slate-400">
+                        <span className="mr-2">{d.type}</span>• <span className="mx-2">{d.size}</span>•{" "}
+                        <span className="ml-2">{formatDate(d.date)}</span>
+                      </div>
+                      <div className="mt-3 flex gap-2">
+                        <button className="rounded-lg border border-slate-200 px-3 py-1.5 text-[12.5px] hover:bg-slate-50 dark:border-white/20 dark:hover:bg-white/10">
+                          View
+                        </button>
+                        <button className="rounded-lg bg-[#18446C] text-white px-3 py-1.5 text-[12.5px] hover:opacity-90">
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-slate-500 dark:text-slate-400 col-span-full">
+                  Tidak ada dokumen yang cocok.
+                </p>
+              )}
+            </div>
+          </article>
         </div>
       </section>
 

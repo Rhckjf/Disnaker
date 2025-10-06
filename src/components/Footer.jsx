@@ -1,64 +1,56 @@
 // src/components/Footer.jsx
 import React from "react";
-import { FaInstagram, FaTwitter, FaCommentDots } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaFacebook, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B2C4D] text-white py-6 px-10">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-6">
-        
-        {/* Kiri - Logo & Alamat */}
-        <div className="flex-1 text-left">
-          <div className="flex items-start gap-3">
-            <img
-              src="/logo.png" // ganti sesuai logo instansi
-              alt="Logo"
-              className="w-16 h-16"
-            />
-            <div>
-              <h3 className="font-bold">DINAS KETENAGAKERJAAN</h3>
-              <p className="text-sm leading-relaxed">
-                Sukamahi, Kec. Cikarang Pusat, <br />
-                Kabupaten Bekasi, Jawa Barat 17530
-              </p>
-            </div>
+    <footer className="bg-[#18446C] text-white">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Kiri: Logo & sosmed */}
+        <div className="flex flex-col items-center text-center">
+          <img src="/logo.png" alt="Logo Disnaker" className="w-36 h-36 mb-4" />
+          <div className="flex gap-5 text-xl">
+            <a href="#" className="hover:text-gray-200"><FaTwitter /></a>
+            <a href="#" className="hover:text-gray-200"><FaInstagram /></a>
+            <a href="#" className="hover:text-gray-200"><FaFacebook /></a>
+            <a href="#" className="hover:text-gray-200"><FaYoutube /></a>
           </div>
         </div>
 
-        {/* Tengah - Kontak & Sosmed */}
-        <div className="flex-1 text-center">
-          <div>
-            <p className="font-semibold">
-              EMAIL: <span className="font-normal">example@gmail.com</span>
-            </p>
-            <p className="font-semibold">
-              TELPON: <span className="font-normal">+62 8432 2324</span>
-            </p>
-          </div>
-          <div className="flex justify-center gap-6 mt-3 text-2xl">
-            <a href="#" className="hover:text-gray-300">
-              <FaInstagram />
-            </a>
-            <a href="#" className="hover:text-gray-300">
-              <FaTwitter />
-            </a>
-            <a href="#" className="hover:text-gray-300">
-              <FaCommentDots />
-            </a>
-          </div>
+        {/* Tengah: Info */}
+        <div className="text-left">
+          <h3 className="font-bold uppercase text-lg pb-2 mb-3 border-b border-white/20">
+            DINAS KETENAGAKERJAAN KABUPATEN BEKASI
+          </h3>
+          <p className="text-sm whitespace-pre-line leading-relaxed mb-3">
+            Sukamahi, Kec. Cikarang Pusat,
+            {"\n"}Kabupaten Bekasi, Jawa Barat 17530
+          </p>
+          <p className="text-sm mb-2"><span className="font-semibold">Email:</span> disnaker@bekasikab.go.id</p>
+          <p className="text-sm mb-1"><span className="font-semibold">Telp:</span> (021) 000000</p>
+          <p className="text-sm"><span className="font-semibold">Fax:</span> (021) 000000</p>
         </div>
 
-       {/* Bagian kanan: Google Maps */}
-    <div className="w-full md:w-1/3 flex justify-center">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2194212325617!2d107.1746316!3d-6.3656432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699be0e723f74b%3A0xa6c7b6a84003a947!2sDinas%20Kependudukan%20dan%20Catatan%20Sipil%20Kabupaten%20Bekasi!5e0!3m2!1sid!2sid!4v1758783836904!5m2!1sid!2sid"
-        width="300"
-        height="200"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+        {/* Kanan: Map */}
+        <div className="flex justify-center">
+          <iframe
+            src="https://www.google.com/maps?q=Dinas%20Ketenagakerjaan%20Kabupaten%20Bekasi&output=embed"
+            width="300"
+            height="200"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Peta Disnaker Kabupaten Bekasi"
+            className="rounded-md shadow-md border border-white/10"
+          />
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto py-4 px-6 text-center text-sm">
+          &copy; {new Date().getFullYear()} Dinas Ketenagakerjaan Kabupaten Bekasi.
+          <span className="font-semibold"> All rights reserved.</span>
         </div>
       </div>
     </footer>
