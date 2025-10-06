@@ -30,7 +30,6 @@ export default function SelayangPandang() {
 
       {/* ===== KONTEN DIPERKECIL (MAX 880PX) ===== */}
       <section className="-mt-20 relative z-20">
-        {/* kotak utama */}
         <div className="container-tight">
           <div className="bg-white border border-slate-200/70 rounded-[22px] shadow-xl p-6 sm:p-8 min-h-[300px]">
             <span className="pill mb-3 inline-flex">Sekilas Disnaker</span>

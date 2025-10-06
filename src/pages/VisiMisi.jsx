@@ -10,7 +10,7 @@ export default function VisiMisi() {
       <section
         className="relative bg-[#18446C] text-white h-[280px] sm:h-[320px]"
         style={{
-          backgroundImage: "url('/gedung.png')", // pastikan ada file ini di /public
+          backgroundImage: "url('/gedung.png')", 
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

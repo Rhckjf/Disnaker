@@ -6,11 +6,11 @@ export default function Structural() {
     <>
       <Navbar />
 
-      {/* ===== HEADER BIRU = foto jadi background ===== */}
+      {/*  background ===== */}
       <section
         className="relative bg-[#18446C] text-white h-[280px] sm:h-[320px]"
         style={{
-          backgroundImage: "url('/gedung.png')", // pastikan ada di /public
+          backgroundImage: "url('/gedung.png')",  
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -29,7 +29,6 @@ export default function Structural() {
               {/* Sidebar kiri */}
               <aside className="bg-[#244563] text-white p-5 md:p-6">
                 <nav className="space-y-2">
-                  {/* sebelumnya ada bg-white/10 → dihapus */}
                   <span className="block font-semibold">Structural</span>
                 </nav>
               </aside>
