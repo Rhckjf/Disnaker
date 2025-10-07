@@ -10,15 +10,10 @@ function Berita() {
       {/* Hero Section */}
       <div className="relative">
         <img
-          src="gedung.png"   
+          src="/gedung.png"   // letakkan di folder public agar bisa dipanggil langsung
           alt="Gedung Disnaker"
           className="w-full h-72 object-cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <h1 className="text-white text-2xl md:text-3xl font-bold">
-            Berita Terkini
-          </h1>
-        </div>
       </div>
 
       {/* Konten Utama */}
@@ -32,7 +27,7 @@ function Berita() {
             Yogi Ernes – detikNews
           </p>
           <img
-            src="berita.jpeg"
+            src="/berita.jpeg"
             alt="Antrean"
             className="w-full h-64 object-cover rounded-lg mb-4"
           />
@@ -70,7 +65,7 @@ function Berita() {
                 href="#"
                 className="text-blue-600 hover:underline text-sm mt-3"
               >
-                Baca selengkapnya gess!!!
+                Baca selengkapnya
               </a>
             </div>
           ))}
