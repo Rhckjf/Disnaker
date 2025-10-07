@@ -10,37 +10,37 @@ export default function Page() {
       id: 1,
       title: "EXTENSION OF SUBMISSION DEADLINE FOR INDIVIDUAL CONSULTANT",
       date: "5 Oktober 2025",
-      image: "/img/berita1.png",
+      image: "/Trending.jpeg",
     },
     {
       id: 2,
       title: "PENGUMUMAN WAKTU PENGUMUMAN PENGADAAN JASA KONSULTAN",
       date: "4 Oktober 2025",
-      image: "/img/berita2.png",
+      image: "/berita.jpeg",
     },
     {
       id: 3,
       title: "ANNOUNCEMENT OF INDIVIDUAL CONSULTANCY SERVICES PROCURE...",
       date: "3 Oktober 2025",
-      image: "/img/berita3.png",
+      image: "/Trending.jpeg",
     },
     {
       id: 4,
       title: "PENGUMUMAN PENGADAAN JASA KONSULTAN PERDAGANGAN PROGRAM",
       date: "3 Oktober 2025",
-      image: "/img/berita4.png",
+      image: "/berita.jpeg",
     },
     {
       id: 5,
       title: "PENGUMUMAN PENGADAAN JASA KONSULTAN FIRMA PROGRAM LIS...",
       date: "2 Oktober 2025",
-      image: "/img/berita5.png",
+      image: "/Trending.jpeg",
     },
     {
       id: 6,
       title: "PENETAPAN ALOKASI KEBUTUHAN PEGAWAI PEMERINTAH DENGAN P...",
       date: "1 Oktober 2025",
-      image: "/img/berita6.png",
+      image: "/berita.jpeg",
     },
   ];
 
