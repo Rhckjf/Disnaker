@@ -1,80 +1,150 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-function Berita() {
+export default function Page() {
+  const [search, setSearch] = useState("");
+
+  const berita = [
+    {
+      id: 1,
+      title: "EXTENSION OF SUBMISSION DEADLINE FOR INDIVIDUAL CONSULTANT",
+      date: "5 Oktober 2025",
+      image: "/img/berita1.png",
+    },
+    {
+      id: 2,
+      title: "PENGUMUMAN WAKTU PENGUMUMAN PENGADAAN JASA KONSULTAN",
+      date: "4 Oktober 2025",
+      image: "/img/berita2.png",
+    },
+    {
+      id: 3,
+      title: "ANNOUNCEMENT OF INDIVIDUAL CONSULTANCY SERVICES PROCURE...",
+      date: "3 Oktober 2025",
+      image: "/img/berita3.png",
+    },
+    {
+      id: 4,
+      title: "PENGUMUMAN PENGADAAN JASA KONSULTAN PERDAGANGAN PROGRAM",
+      date: "3 Oktober 2025",
+      image: "/img/berita4.png",
+    },
+    {
+      id: 5,
+      title: "PENGUMUMAN PENGADAAN JASA KONSULTAN FIRMA PROGRAM LIS...",
+      date: "2 Oktober 2025",
+      image: "/img/berita5.png",
+    },
+    {
+      id: 6,
+      title: "PENETAPAN ALOKASI KEBUTUHAN PEGAWAI PEMERINTAH DENGAN P...",
+      date: "1 Oktober 2025",
+      image: "/img/berita6.png",
+    },
+  ];
+
+  const filteredNews = berita.filter((b) =>
+    b.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="font-sans">
+    <>
       <Navbar />
 
-      {/* Hero Section */}
-      <div className="relative">
-        <img
-          src="/gedung.png"   // letakkan di folder public agar bisa dipanggil langsung
-          alt="Gedung Disnaker"
-          className="w-full h-72 object-cover"
-        />
-      </div>
+      {/* ===== CONTENT WRAPPER ===== */}
+      <main className="min-h-screen bg-white pt-6 pb-16">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          {/* Title */}
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">
+            Berita dan Informasi
+          </h1>
 
-      {/* Konten Utama */}
-      <div className="container mx-auto px-4 py-10 grid lg:grid-cols-2 gap-8">
-        {/* Berita Utama */}
-        <div className="bg-white rounded-xl shadow-md p-5">
-          <h2 className="text-lg font-semibold mb-1">
-            Disnaker Bekasi Sempat Dipadati Antrean
-          </h2>
-          <p className="text-sm text-gray-500 mb-4">
-            Yogi Ernes – detikNews
-          </p>
-          <img
-            src="/berita.jpeg"
-            alt="Antrean"
-            className="w-full h-64 object-cover rounded-lg mb-4"
-          />
-          <p className="text-gray-700 leading-relaxed mb-3">
-            Bekasi – Sebuah video menunjukkan Kantor Dinas Tenaga Kerja (Disnaker) Kota
-            Bekasi dipadati warga yang hendak mengurus pembuatan kartu Antar Kerja (AK-1) 
-            atau kartu kuning pagi tadi. Kepadatan tersebut juga membuat timbulan jaga jarak
-            tampak terabaikan.
-          </p>
-          <p className="text-gray-700 leading-relaxed mb-3">
-            Excepteur efficient emerging, minim veniam anim aute carefully curated ginza
-            conversation exquisite perfect nostrum nisi intricate content. Quid international
-            first-class ritual it. Punctual adipisicing, essential lovely queen temper omnis 
-            more rural...
-          </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
-            Lihat lebih banyak
-          </button>
-        </div>
-
-        {/* Berita Lainnya */}
-        <div className="grid sm:grid-cols-2 gap-6">
-          {[1, 2, 3, 4].map((item) => (
-            <div
-              key={item}
-              className="bg-white rounded-xl shadow-md p-4 flex flex-col"
+          {/* Search bar */}
+          <div className="relative w-full mb-6">
+            <input
+              type="text"
+              placeholder="Cari berita"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#18446C]/30 focus:border-[#18446C] outline-none"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <div className="h-32 bg-gray-200 rounded-md mb-3"></div>
-              <h3 className="font-semibold text-base mb-2">Title</h3>
-              <p className="text-sm text-gray-600 flex-1">
-                Body text for whatever you'd like to say. Add main takeaway
-                points, quotes, anecdotes, or even a very short story.
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+
+          {/* Info jumlah */}
+          <p className="text-sm text-gray-500 mb-6">
+            Menampilkan {filteredNews.length} dari {berita.length} berita.
+          </p>
+
+          {/* ===== GRID BERITA ===== */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filteredNews.length > 0 ? (
+              filteredNews.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-44 object-cover"
+                  />
+                  <div className="p-4">
+                    <p className="text-xs text-gray-500 mb-1">
+                      {item.date}
+                    </p>
+                    <h2 className="text-[15px] font-semibold text-gray-800 leading-snug line-clamp-2">
+                      {item.title}
+                    </h2>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="col-span-full text-gray-500 text-sm text-center">
+                Tidak ada berita yang cocok dengan pencarian.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:underline text-sm mt-3"
+            )}
+          </div>
+
+          {/* ===== PAGINATION (Dummy) ===== */}
+          <div className="flex justify-center items-center gap-2 mt-10">
+            <button className="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-100">
+              &lt;
+            </button>
+            {[1, 2, 3, 4, 5].map((n) => (
+              <button
+                key={n}
+                className={`px-3 py-1.5 border rounded-lg text-sm ${
+                  n === 1
+                    ? "bg-[#18446C] text-white border-[#18446C]"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
               >
-                Baca selengkapnya
-              </a>
-            </div>
-          ))}
+                {n}
+              </button>
+            ))}
+            <button className="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-100">
+              &gt;
+            </button>
+          </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
-    </div>
+    </>
   );
 }
-
-export default Berita;
