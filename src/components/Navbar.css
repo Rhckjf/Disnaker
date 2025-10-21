@@ -1,0 +1,33 @@
+/* Navbar fade-in */
+@keyframes fadeInNavbar { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.animate-navbar{ animation:fadeInNavbar .6s ease-in-out }
+.animate-fade-in{ animation:fadeInNavbar .8s ease-in-out }
+
+/* Link style: tanpa underline, hover elegan */
+.nav-link{ color:#1f2937; text-decoration:none; transition:color .2s ease }
+.nav-link:hover{ color:#18446c }
+
+/* Caret: putar saat open */
+.caret{ transition:transform .25s ease }
+.caret.open{ transform:rotate(180deg) }
+
+/* Overlay panel animation (tidak menggeser konten) */
+.panel-closed{
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity .28s ease, transform .34s cubic-bezier(.22,1,.36,1);
+  pointer-events:none; /* cegah klik saat tertutup */
+}
+.panel-open{
+  opacity:1;
+  transform:translateY(0);
+  transition:opacity .28s ease, transform .34s cubic-bezier(.22,1,.36,1);
+}
+
+/* Stagger tiap item agar lebih 'classy' */
+.mega-item{ opacity:0; transform:translateY(8px); transition:opacity .35s ease, transform .45s ease }
+.panel-open .mega-item{ opacity:1; transform:translateY(0) }
+.panel-open .mega-item:nth-child(1){ transition-delay:80ms }
+.panel-open .mega-item:nth-child(2){ transition-delay:120ms }
+.panel-open .mega-item:nth-child(3){ transition-delay:160ms }
+.panel-open .mega-item:nth-child(4){ transition-delay:200ms }
