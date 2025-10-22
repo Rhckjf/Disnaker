@@ -18,7 +18,7 @@ export default function SelayangPandang() {
       <section
         className="relative h-[280px] sm:h-[340px] text-white"
         style={{
-          backgroundImage: "url('/gedung.png')",
+          backgroundImage: "url('/col3.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

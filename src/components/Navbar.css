@@ -1,74 +1,126 @@
-/* === Navbar fade-in === */
+/* === Navbar Animations === */
 @keyframes fadeInNavbar {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.animate-navbar {
+
+header .animate-navbar {
   animation: fadeInNavbar 0.6s ease-in-out;
 }
-.animate-fade-in {
+
+header .animate-fade-in {
   animation: fadeInNavbar 0.3s ease-in-out;
 }
 
-/* === Link style: tanpa underline, hover elegan === */
-.nav-link {
+/* === Link Style === */
+header .nav-link {
   color: #1f2937;
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.nav-link:hover {
+header .nav-link:hover {
   color: #18446c;
 }
 
-/* === Caret: putar saat open === */
-.caret {
+/* === Dropdown === */
+header .caret {
   transition: transform 0.25s ease;
 }
-.caret.open {
+header .caret.open {
   transform: rotate(180deg);
 }
 
-/* === Dropdown panel kecil === */
-.dropdown-panel {
+header .dropdown-panel {
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 0.25s ease, transform 0.3s ease;
   pointer-events: none;
 }
-.dropdown-panel.open {
+header .dropdown-panel.open {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-/* === Item style di dropdown === */
-.dropdown-item {
+/* === Dropdown Item === */
+header .dropdown-item {
   display: block;
   padding: 0.5rem 1rem;
   color: #1f2937;
   font-weight: 500;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.dropdown-item:hover {
+header .dropdown-item:hover {
   background-color: #f9fafb;
   color: #18446c;
 }
 
-/* Efek bayangan lembut biar elegan */
-.shadow-soft {
+/* === Shadow === */
+header .shadow-soft {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Responsif */
+/* === Mobile Animations === */
+@keyframes slideDownMenu {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+header .animate-slide-down {
+  animation: slideDownMenu 0.3s ease-in-out;
+}
+
+/* === Hamburger Icon === */
+header .hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 1.9rem;
+  color: #18446c;
+  transition: transform 0.2s ease;
+}
+header .hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* === Responsiveness === */
 @media (max-width: 768px) {
-  .dropdown-panel {
-    width: 100%;
-    left: 0;
+  header .hamburger {
+    display: block;
+  }
+
+  header .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    animation: slideDownMenu 0.3s ease-in-out;
+  }
+
+  header .nav-mobile a {
+    padding: 0.6rem 0;
+    font-weight: 600;
+    color: #1f2937;
+    transition: color 0.2s ease;
+  }
+
+  header .nav-mobile a:hover {
+    color: #18446c;
+  }
+
+  header .dropdown-mobile {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.3rem;
+  }
+
+  header .dropdown-mobile a {
+    padding: 0.4rem 0;
+    font-size: 0.95rem;
+    color: #374151;
+  }
+
+  header .dropdown-mobile a:hover {
+    color: #18446c;
   }
 }
