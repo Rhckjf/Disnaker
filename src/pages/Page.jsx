@@ -1,46 +1,104 @@
+// src/pages/Page.jsx
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 
 export default function Page() {
   const [search, setSearch] = useState("");
 
+  // === DATA BERITA ===
   const berita = [
     {
       id: 1,
-      title: "EXTENSION OF SUBMISSION DEADLINE FOR INDIVIDUAL CONSULTANT",
-      date: "5 Oktober 2025",
-      image: "/Trending.jpeg",
+      title: "Lulusan President University Dipastikan Lulus CPNS",
+      date: "10 Januari 2025",
+      img: "/news5.png",
+      desc: "Bupati Bekasi bersama pihak Disnaker menyampaikan apresiasi kepada lulusan President University yang telah berhasil melalui seleksi CPNS.",
     },
     {
       id: 2,
-      title: "PENGUMUMAN WAKTU PENGUMUMAN PENGADAAN JASA KONSULTAN",
-      date: "4 Oktober 2025",
-      image: "/berita.jpeg",
+      title: "Peresmian Gedung Baru Disnaker Kabupaten Bekasi",
+      date: "22 Januari 2025",
+      img: "/news1.png",
+      desc: "Disnaker Kabupaten Bekasi resmi membuka gedung baru di kawasan pemerintahan Cikarang.",
     },
     {
       id: 3,
-      title: "ANNOUNCEMENT OF INDIVIDUAL CONSULTANCY SERVICES PROCURE...",
-      date: "3 Oktober 2025",
-      image: "/Trending.jpeg",
+      title: "Makan Bersama Menteri Pertahanan Prabowo Subianto",
+      date: "20 Januari 2025",
+      img: "/news2.png",
+      desc: "Acara santai makan bersama membahas sinergi dunia kerja dan pembangunan nasional.",
     },
     {
       id: 4,
-      title: "PENGUMUMAN PENGADAAN JASA KONSULTAN PERDAGANGAN PROGRAM",
-      date: "3 Oktober 2025",
-      image: "/berita.jpeg",
+      title: "Pembukaan Program Magang Paid di Atas UMR",
+      date: "18 Januari 2025",
+      img: "/news3.png",
+      desc: "Program magang baru bagi mahasiswa dengan kompensasi di atas UMR.",
     },
     {
       id: 5,
-      title: "PENGUMUMAN PENGADAAN JASA KONSULTAN FIRMA PROGRAM LIS...",
-      date: "2 Oktober 2025",
-      image: "/Trending.jpeg",
+      title: "Pelatihan Digital Skill untuk Pekerja Muda di Bekasi",
+      date: "10 Oktober 2025",
+      img: "/news4.png",
+      desc: "Disnaker Bekasi menggelar pelatihan keterampilan digital untuk mendukung transformasi ekonomi digital.",
     },
     {
       id: 6,
-      title: "PENETAPAN ALOKASI KEBUTUHAN PEGAWAI PEMERINTAH DENGAN P...",
+      title: "Job Fair Bekasi 2025 Resmi Dibuka",
+      date: "12 Oktober 2025",
+      img: "/news6.png",
+      desc: "Ratusan perusahaan berpartisipasi dalam Job Fair 2025 yang dibuka oleh Bupati Bekasi.",
+    },
+    {
+      id: 7,
+      title: "Sosialisasi Perlindungan Tenaga Kerja Migran",
+      date: "8 Oktober 2025",
+      img: "/news7.png",
+      desc: "Disnaker Bekasi memberikan edukasi pentingnya perlindungan bagi pekerja migran Indonesia.",
+    },
+    {
+      id: 8,
+      title: "Program Magang Bersertifikat Dimulai",
+      date: "5 Oktober 2025",
+      img: "/news8.png",
+      desc: "Mahasiswa Bekasi kini dapat mengikuti program magang bersertifikat dari Disnaker.",
+    },
+    {
+      id: 9,
+      title: "Peningkatan Pelayanan Publik Disnaker Bekasi",
+      date: "2 Oktober 2025",
+      img: "/news9.png",
+      desc: "Disnaker terus berinovasi dalam memberikan pelayanan cepat dan transparan kepada masyarakat.",
+    },
+    {
+      id: 10,
+      title: "Kenaikan Emas Berkali-kali Lipat",
+      date: "20 Oktober 2025",
+      img: "/news10.png",
+      desc: "Harga emas dunia terus melonjak akibat inflasi global dan ketidakpastian ekonomi.",
+    },
+    {
+      id: 11,
+      title: "Pemerintah Resmi Menetapkan Roblox Sebagai Meta Kedua Indonesia",
+      date: "19 Oktober 2025",
+      img: "/news11.png",
+      desc: "Langkah berani ini membuka peluang besar bagi ekonomi digital dan kreator muda.",
+    },
+    {
+      id: 12,
+      title: "Pengusaha Muda Inisial Y Sukses di Bidang Crypto dan Saham",
+      date: "18 Oktober 2025",
+      img: "/news12.png",
+      desc: "Kisah inspiratif pengusaha muda asal Bekasi yang sukses membangun portofolio investasi digital.",
+    },
+    {
+      id: 13,
+      title: "Rapat Koordinasi Ketenagakerjaan se-Jawa Barat",
       date: "1 Oktober 2025",
-      image: "/berita.jpeg",
+      img: "/news13.png",
+      desc: "Bekasi menjadi tuan rumah rapat koordinasi yang dihadiri oleh seluruh kepala dinas ketenagakerjaan Jawa Barat.",
     },
   ];
 
@@ -52,26 +110,34 @@ export default function Page() {
     <>
       <Navbar />
 
-      {/* ===== CONTENT WRAPPER ===== */}
-      <main className="min-h-screen bg-white pt-6 pb-16">
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
-          {/* Title */}
-          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">
-            Berita dan Informasi
+      {/* === HERO SECTION === */}
+      <section className="relative flex flex-col items-center justify-center h-[260px] text-white text-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#18446C] to-[#0F2C4C]" />
+        <div className="relative z-10">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
+            Berita & Informasi
           </h1>
+          <p className="text-gray-200 text-sm md:text-base mb-6">
+            Update terkini seputar kegiatan dan program ketenagakerjaan Bekasi
+          </p>
 
-          {/* Search bar */}
-          <div className="relative w-full mb-6">
+          {/* === Search bar di bawah judul === */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="relative w-[90vw] sm:w-[500px] mx-auto"
+          >
             <input
               type="text"
-              placeholder="Cari berita"
+              placeholder="Cari berita..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#18446C]/30 focus:border-[#18446C] outline-none"
+              className="w-full rounded-full border border-gray-300 bg-white/95 px-5 py-3 pl-12 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#18446C]/40 focus:border-[#18446C] transition"
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+              className="absolute left-4 top-3.5 h-5 w-5 text-[#18446C]/70"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -83,63 +149,87 @@ export default function Page() {
                 d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          {/* Info jumlah */}
-          <p className="text-sm text-gray-500 mb-6">
+      {/* === BODY BERITA === */}
+      <main className="bg-[#F8FAFC] py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 space-y-12">
+          <p className="text-center text-sm text-gray-600">
             Menampilkan {filteredNews.length} dari {berita.length} berita.
           </p>
 
-          {/* ===== GRID BERITA ===== */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredNews.length > 0 ? (
-              filteredNews.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden"
+          {/* === BARIS 1 (geser kiri) === */}
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex gap-6"
+              animate={{ x: ["0%", `-${filteredNews.length * 300}px`] }}
+              transition={{
+                repeat: Infinity,
+                duration: 80,
+                ease: "linear",
+              }}
+            >
+              {[...filteredNews, ...filteredNews].map((item, i) => (
+                <motion.div
+                  key={`atas-${i}`}
+                  whileHover={{ scale: 1.05 }}
+                  className="min-w-[300px] bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition"
                 >
                   <img
-                    src={item.image}
+                    src={item.img}
                     alt={item.title}
                     className="w-full h-44 object-cover"
                   />
                   <div className="p-4">
-                    <p className="text-xs text-gray-500 mb-1">
-                      {item.date}
-                    </p>
-                    <h2 className="text-[15px] font-semibold text-gray-800 leading-snug line-clamp-2">
+                    <p className="text-xs text-gray-500 mb-1">{item.date}</p>
+                    <h2 className="text-[15px] font-semibold text-[#18446C] leading-snug line-clamp-2">
                       {item.title}
                     </h2>
+                    <p className="text-xs text-gray-600 mt-1 line-clamp-2">
+                      {item.desc}
+                    </p>
                   </div>
-                </div>
-              ))
-            ) : (
-              <p className="col-span-full text-gray-500 text-sm text-center">
-                Tidak ada berita yang cocok dengan pencarian.
-              </p>
-            )}
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
 
-          {/* ===== PAGINATION (Dummy) ===== */}
-          <div className="flex justify-center items-center gap-2 mt-10">
-            <button className="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-100">
-              &lt;
-            </button>
-            {[1, 2, 3, 4, 5].map((n) => (
-              <button
-                key={n}
-                className={`px-3 py-1.5 border rounded-lg text-sm ${
-                  n === 1
-                    ? "bg-[#18446C] text-white border-[#18446C]"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-              >
-                {n}
-              </button>
-            ))}
-            <button className="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-100">
-              &gt;
-            </button>
+          {/* === BARIS 2 (geser kanan) === */}
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex gap-6"
+              animate={{ x: [`-${filteredNews.length * 300}px`, "0%"] }}
+              transition={{
+                repeat: Infinity,
+                duration: 85,
+                ease: "linear",
+              }}
+            >
+              {[...filteredNews, ...filteredNews].map((item, i) => (
+                <motion.div
+                  key={`bawah-${i}`}
+                  whileHover={{ scale: 1.05 }}
+                  className="min-w-[300px] bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-44 object-cover"
+                  />
+                  <div className="p-4">
+                    <p className="text-xs text-gray-500 mb-1">{item.date}</p>
+                    <h2 className="text-[15px] font-semibold text-[#18446C] leading-snug line-clamp-2">
+                      {item.title}
+                    </h2>
+                    <p className="text-xs text-gray-600 mt-1 line-clamp-2">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </main>
