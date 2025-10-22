@@ -1,7 +1,9 @@
+// src/pages/Home.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 import "./Home.css";
 
 import {
@@ -56,15 +58,15 @@ export default function Home() {
     },
   ];
 
-  // === Auto slide berita kiri ===
+  // === Auto slide berita ===
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveNewsIndex((prev) => (prev + 1) % newsItems.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [newsItems.length]);
 
-  // === Data layanan utama (12 item) ===
+  // === Layanan ===
   const services = [
     { icon: <FaBullhorn />, title: "Pusat Karir" },
     { icon: <FaCalendarAlt />, title: "Job Fair" },
@@ -83,19 +85,34 @@ export default function Home() {
   const servicesPerSlide = 6;
   const totalSlides = Math.ceil(services.length / servicesPerSlide);
 
-  // === Auto slide layanan tiap 6 detik ===
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveServiceSlide((prev) => (prev + 1) % totalSlides);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [totalSlides]);
 
-  // === Handle Search ===
   const handleSearch = (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
     alert(`Mencari: ${searchQuery}`);
+  };
+
+  // === Variants Animasi Smooth ===
+  const fadeUpSmooth = {
+    hidden: { opacity: 0, y: 35 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.3, ease: "easeInOut" },
+    },
+  };
+
+  const parentSmooth = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.18, delayChildren: 0.2 },
+    },
   };
 
   return (
@@ -103,22 +120,42 @@ export default function Home() {
       <Navbar />
 
       {/* === HERO SECTION === */}
-      <section className="relative flex items-center justify-center min-h-[70vh] text-white">
+      <section className="relative flex items-center justify-center min-h-[70vh] text-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#18446C] to-[#0F2C4C]" />
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-3 animate-fadeIn">
-            Layanan Publik Disnaker
-          </h1>
-          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 animate-fadeInSlow">
-            Kabupaten Bekasi
-          </h2>
-          <p className="text-lg md:text-xl text-gray-200 mb-10 animate-fadeInDelay">
-            Akses layanan ketenagakerjaan dengan mudah, cepat, dan transparan
-          </p>
 
-          <form
+        <motion.div
+          className="relative z-10 max-w-4xl mx-auto text-center px-6"
+          initial="hidden"
+          animate="visible"
+          variants={parentSmooth}
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-extrabold leading-tight mb-3"
+            variants={fadeUpSmooth}
+          >
+            Layanan Publik Disnaker
+          </motion.h1>
+
+          <motion.h2
+            className="text-4xl md:text-6xl font-extrabold mb-6"
+            variants={fadeUpSmooth}
+          >
+            Kabupaten Bekasi
+          </motion.h2>
+
+          <motion.p
+            className="text-lg md:text-xl text-gray-200 mb-10"
+            variants={fadeUpSmooth}
+          >
+            Akses layanan ketenagakerjaan dengan mudah, cepat, dan transparan
+          </motion.p>
+
+          <motion.form
             onSubmit={handleSearch}
-            className="w-full max-w-2xl mx-auto flex bg-white rounded-full overflow-hidden shadow-lg border border-gray-200 animate-slideUp"
+            className="w-full max-w-2xl mx-auto flex bg-white rounded-full overflow-hidden shadow-lg border border-gray-200"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
           >
             <input
               type="text"
@@ -133,69 +170,77 @@ export default function Home() {
             >
               <FaSearch className="text-white text-xl" />
             </button>
-          </form>
-        </div>
+          </motion.form>
+        </motion.div>
       </section>
 
       {/* === LAYANAN UTAMA === */}
       <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#18446C] mb-10 animate-fadeIn">
+        <motion.div
+          className="max-w-7xl mx-auto px-6 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={parentSmooth}
+        >
+          <motion.h2
+            className="text-2xl md:text-3xl font-bold text-[#18446C] mb-10"
+            variants={fadeUpSmooth}
+          >
             Layanan Utama
-          </h2>
+          </motion.h2>
 
-          <div className="overflow-hidden relative">
+          <motion.div
+            className="overflow-hidden relative"
+            variants={fadeUpSmooth}
+            transition={{ duration: 1 }}
+          >
             <div
-              className="flex transition-transform duration-700 ease-in-out w-[200%]"
+              className="flex transition-transform duration-[1200ms] ease-[cubic-bezier(0.77,0,0.175,1)] w-[200%]"
               style={{ transform: `translateX(-${activeServiceSlide * 50}%)` }}
             >
               {[0, 1].map((slide) => (
                 <div
                   key={slide}
-                  className="w-1/2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center flex-shrink-0"
+                  className="w-1/2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center flex-shrink-0"
                 >
                   {services
                     .slice(slide * 6, slide * 6 + 6)
                     .map((s, i) => (
-                      <div
+                      <motion.div
                         key={i}
                         className="service-card group w-[120px] h-[120px] sm:w-[110px] sm:h-[110px] md:w-[130px] md:h-[130px]"
+                        variants={fadeUpSmooth}
+                        transition={{ duration: 1, delay: i * 0.05 }}
                       >
-                        <div className="text-[#18446C] text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-[#18446C] text-2xl mb-2 group-hover:scale-110 transition-transform duration-500 ease-in-out">
                           {s.icon}
                         </div>
                         <h3 className="font-semibold text-[13px] text-[#18446C] leading-tight">
                           {s.title}
                         </h3>
-                      </div>
+                      </motion.div>
                     ))}
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* DOT SLIDE */}
-          <div className="flex justify-center gap-2 mt-6 animate-fadeIn">
-            {[0, 1].map((index) => (
-              <button
-                key={index}
-                onClick={() => setActiveServiceSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  activeServiceSlide === index
-                    ? "bg-[#18446C]"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* === BERITA & UPDATE TERBARU === */}
+      {/* === BERITA === */}
       <section id="berita" className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row justify-between items-center mb-10 text-center md:text-left">
+        <motion.div
+          className="max-w-7xl mx-auto px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={parentSmooth}
+        >
+          <motion.div
+            className="flex flex-col md:flex-row justify-between items-center mb-10 text-center md:text-left"
+            variants={fadeUpSmooth}
+          >
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-[#18446C] tracking-tight mb-2">
                 Berita & Update Terbaru
@@ -207,20 +252,21 @@ export default function Home() {
 
             <Link
               to="/page"
-              className="mt-6 md:mt-0 inline-block bg-[#18446C] text-white px-6 py-2.5 rounded-full shadow-md hover:bg-[#133a5a] hover:shadow-lg transition-all duration-300"
+              className="mt-6 md:mt-0 inline-block bg-[#18446C] text-white px-6 py-2.5 rounded-full shadow-md hover:bg-[#133a5a] hover:shadow-lg transition-all duration-500"
             >
               Lihat Semua Berita →
             </Link>
-          </div>
+          </motion.div>
 
-          {/* Grid Berita */}
           <div className="grid md:grid-cols-2 gap-8 items-stretch">
-            {/* Kiri - Slide Otomatis */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg h-full min-h-[420px] flex flex-col justify-between animate-fadeInSlow">
+            <motion.div
+              className="relative rounded-2xl overflow-hidden shadow-lg h-full min-h-[420px]"
+              variants={fadeUpSmooth}
+            >
               {newsItems.map((news, index) => (
                 <div
                   key={news.id}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  className={`absolute inset-0 transition-opacity duration-[1600ms] ease-in-out ${
                     activeNewsIndex === index
                       ? "opacity-100 z-10"
                       : "opacity-0 z-0"
@@ -239,14 +285,17 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* Kanan - List Berita */}
-            <div className="flex flex-col justify-between gap-5 animate-fadeIn">
+            <motion.div
+              className="flex flex-col justify-between gap-5"
+              variants={parentSmooth}
+            >
               {newsItems.slice(1, 4).map((news) => (
-                <div
+                <motion.div
                   key={news.id}
                   className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all p-4 flex gap-4 items-center h-[120px]"
+                  variants={fadeUpSmooth}
                 >
                   <div className="bg-gray-100 rounded-lg overflow-hidden w-32 h-20 flex-shrink-0 shadow-sm">
                     <img
@@ -269,11 +318,11 @@ export default function Home() {
                       Baca Selengkapnya →
                     </button>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />
